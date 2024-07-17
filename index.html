@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>7g7y服务器论坛</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS 样式可以保持不变 */
+        /* ... */
+    </style>
 </head>
 <body>
     <div class="container">
@@ -33,6 +36,105 @@
 
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const postList = document.getElementById('post-list');
+            const postForm = document.getElementById('post-form');
+
+            // 模拟帖子和评论数据
+            let posts = [
+                { 
+                    id: 1,
+                    title: '第一个帖子', 
+                    content: '这是第一个帖子的内容。', 
+                    author: 'Jane Doe', 
+                    date: '2024-07-17',
+                    comments: [
+                        { author: 'Alice', content: '这是一个很好的帖子！' },
+                        { author: 'Bob', content: '谢谢分享这个信息。' }
+                    ]
+                },
+                { 
+                    id: 2,
+                    title: '第二个帖子', 
+                    content: '这是第二个帖子的内容。', 
+                    author: 'John Smith', 
+                    date: '2024-07-16',
+                    comments: [
+                        { author: 'Eve', content: '非常有趣的内容。' }
+                    ]
+                }
+            ];
+
+            // 加载帖子
+            function loadPosts() {
+                postList.innerHTML = '';
+
+                posts.forEach(post => {
+                    const postDiv = document.createElement('div');
+                    postDiv.classList.add('forum-post');
+                    postDiv.innerHTML = `
+                        <h3>${post.title}</h3>
+                        <p>${post.content}</p>
+                        <p class="meta">作者: ${post.author} | 发布时间: ${post.date}</p>
+                        <div class="comments">
+                            <h4>评论:</h4>
+                            ${post.comments.map(comment => `
+                                <div class="comment">
+                                    <p><strong>${comment.author}:</strong> ${comment.content}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <form class="comment-form">
+                            <label for="comment-content-${post.id}">添加评论:</label>
+                            <textarea id="comment-content-${post.id}" class="comment-content" rows="3"></textarea>
+                            <input type="submit" value="提交评论">
+                        </form>
+                    `;
+                    postList.appendChild(postDiv);
+
+                    // 添加评论表单提交事件
+                    const commentForm = postDiv.querySelector('.comment-form');
+                    commentForm.addEventListener('submit', function(event) {
+                        event.preventDefault();
+                        const commentContent = commentForm.querySelector('.comment-content').value;
+                        const newComment = { author: 'Anonymous', content: commentContent }; // 这里可以处理用户名输入逻辑
+                        post.comments.push(newComment);
+                        loadPosts(); // 重新加载帖子列表以显示新评论
+                    });
+                });
+            }
+
+            // 添加新帖子
+            postForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const title = document.getElementById('post-title').value;
+                const content = document.getElementById('post-content').value;
+                const author = 'Anonymous'; // 这里可以添加用户名输入逻辑
+                const date = new Date().toISOString().slice(0, 10); // 获取当前日期
+
+                const newPost = { 
+                    id: posts.length + 1,
+                    title, 
+                    content, 
+                    author, 
+                    date,
+                    comments: []
+                };
+                posts.push(newPost);
+
+                // 清空表单
+                document.getElementById('post-title').value = '';
+                document.getElementById('post-content').value = '';
+
+                // 更新帖子列表
+                loadPosts();
+            });
+
+            // 初始化页面时加载帖子
+            loadPosts();
+        });
+    </script>
 </body>
 </html>
