@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "title": "服务器ip",
+        "content": "s207.singsi.cn 端口：18258 永久",
+        "author": "Jane Doe",
+        "date": "2024-07-17",
+        "comments": [
+            { "author": "Alice", "content": "还有一服呢" },
+            { "author": "Bob", "content": "对啊这是二服" }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "一服ip",
+        "content": "s207.singsi.cn 端口18256",
+        "author": "John Smith",
+        "date": "2024-07-16",
+        "comments": [
+            { "author": "Eve", "content": "一服感觉比二服流畅诶" }
+        ]
+    }
+]
