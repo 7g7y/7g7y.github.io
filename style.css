@@ -69,3 +69,47 @@ h1 {
 .forum-form input[type="submit"]:hover {
     background-color: #45a049;
 }
+
+.forum-post {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.forum-post h3 {
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.forum-post p {
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.forum-post .meta {
+    color: #999;
+    font-size: 0.9em;
+}
+
+.comments {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.comment {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.comment p {
+    margin-bottom: 5px;
+}
+
+.comment strong {
+    font-weight: bold;
+}
+
