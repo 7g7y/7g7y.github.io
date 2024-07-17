@@ -1,17 +1,147 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>7g7y官网</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 论坛</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        .forum-post {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        .forum-post h3 {
+            margin-top: 0;
+        }
+        .forum-post p {
+            margin-bottom: 0;
+        }
+        .forum-post .meta {
+            color: #777;
+            font-size: 0.9em;
+        }
+        .forum-form {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .forum-form label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .forum-form input[type="text"],
+        .forum-form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .forum-form input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .forum-form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h1>JavaScript 论坛</h1>
 
-<h1>7g7y官网</h1>
-<p>免费 永远公益</p>
-<p>1服ip：s207.sngsi.cn  端口18256</p>
-<p>2服ip:s207.singsi.cn  端口18258</p>
-<h1>1服跟二服的区别? </h1>
-<p>1服配置比二服更好但是不一定一直开着</p>
-<p>2服永久开着绝对不跑路，长期生存的玩这个</p>
+        <!-- 帖子列表 -->
+        <div id="post-list">
+            <!-- JavaScript 动态添加帖子 -->
+        </div>
 
+        <!-- 发帖表单 -->
+        <div class="forum-form">
+            <h2>发表新帖</h2>
+            <form id="post-form">
+                <label for="post-title">标题:</label>
+                <input type="text" id="post-title" name="post-title" required>
+                
+                <label for="post-content">内容:</label>
+                <textarea id="post-content" name="post-content" rows="5" required></textarea>
+                
+                <input type="submit" value="发表">
+            </form>
+        </div>
+        <!-- 发帖表单结束 -->
+
+    </div>
+
+    <script>
+        // 模拟帖子数据
+        let posts = [
+            { title: '第一个帖子', content: '这是第一个帖子的内容。', author: 'Jane Doe', date: '2024-07-17' },
+            { title: '第二个帖子', content: '这是第二个帖子的内容。', author: 'John Smith', date: '2024-07-16' }
+        ];
+
+        // 加载现有帖子
+        function loadPosts() {
+            const postList = document.getElementById('post-list');
+            postList.innerHTML = '';
+
+            posts.forEach(post => {
+                const postDiv = document.createElement('div');
+                postDiv.classList.add('forum-post');
+                postDiv.innerHTML = `
+                    <h3>${post.title}</h3>
+                    <p>${post.content}</p>
+                    <p class="meta">作者: ${post.author} | 发布时间: ${post.date}</p>
+                `;
+                postList.appendChild(postDiv);
+            });
+        }
+
+        // 添加新帖子
+        document.getElementById('post-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const title = document.getElementById('post-title').value;
+            const content = document.getElementById('post-content').value;
+            const author = 'Anonymous'; // 这里可以添加用户名输入逻辑
+            const date = new Date().toISOString().slice(0, 10); // 获取当前日期
+
+            const newPost = { title, content, author, date };
+            posts.push(newPost);
+
+            loadPosts(); // 重新加载帖子列表
+
+            // 清空表单
+            document.getElementById('post-title').value = '';
+            document.getElementById('post-content').value = '';
+        });
+
+        // 初始化页面时加载帖子
+        loadPosts();
+    </script>
 </body>
 </html>
+
