@@ -3,37 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript 论坛</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>在线交流</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>JavaScript 论坛</h1>
-
-        <!-- 帖子列表 -->
-        <div id="post-list">
-            <!-- JavaScript 动态添加帖子 -->
+    <div class="chat-container">
+        <div id="chat-window">
+            <div id="chat-messages"></div>
         </div>
-
-        <!-- 发帖表单 -->
-        <div class="forum-form">
-            <h2>发表新帖</h2>
-            <form id="post-form">
-                <label for="post-title">标题:</label>
-                <input type="text" id="post-title" name="post-title" required>
-                
-                <label for="post-content">内容:</label>
-                <textarea id="post-content" name="post-content" rows="5" required></textarea>
-                
-                <input type="submit" value="发表">
-            </form>
-        </div>
-        <!-- 发帖表单结束 -->
-
+        <input type="text" id="message-input" placeholder="输入消息...">
+        <button onclick="sendMessage()">发送</button>
     </div>
 
-    <script src="index.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
-
